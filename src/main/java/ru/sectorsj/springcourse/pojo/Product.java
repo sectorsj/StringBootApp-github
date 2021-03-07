@@ -1,15 +1,25 @@
 package ru.sectorsj.springcourse.pojo;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
 public class Product {
     private int id;
     private String productName;
     private int price;
 
-    public Product(int id, String productName, int price) {
+    public Product(int id,
+                   String productName,
+                   int price) {
         this.id = id;
         this.productName = productName;
         this.price = price;
     }
+
 
     public int getId() {
         return id;
@@ -34,4 +44,5 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
 }
