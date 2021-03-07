@@ -7,8 +7,8 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.sectorsj.springcourse.TestBean">
+    <bean id="product"
+          class="ru.sectorsj.springcourse.pojo.Product">
         <constructor-arg value="Eugen"/>
     </bean>
 
