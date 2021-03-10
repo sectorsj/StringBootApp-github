@@ -1,10 +1,9 @@
 package ru.sectorsj.springcourse;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.sectorsj.springcourse.cameraroll.CameraRoll;
-import ru.sectorsj.springcourse.cameraroll.ColorCameraRoll;
 
 @SpringBootApplication
 public class Client {
@@ -12,9 +11,13 @@ public class Client {
 	public static void main(String[] args) {
 		//SpringApplication.run(Client.class, args);
 
-		Camera camera = new Camera();
-		CameraRoll cameraRoll = new ColorCameraRoll();
-		camera.setCameraRoll(cameraRoll);
+		ApplicationContext context = new
+				AnnotationConfigApplicationContext(AppConfig.class);
+		Camera camera = context.getBean("camera", Camera.class);
 		camera.doPhotograph();
+
+		// CameraRoll cameraRoll = new ColorCameraRoll();
+		// Camera camera = new Camera();
+		// camera.setCameraRoll(cameraRoll);
 	}
 }

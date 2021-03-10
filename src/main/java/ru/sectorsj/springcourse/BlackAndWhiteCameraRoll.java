@@ -1,5 +1,9 @@
-package ru.sectorsj.springcourse.cameraroll;
+package ru.sectorsj.springcourse;
 
+import org.springframework.stereotype.Component;
+
+
+@Component("cameraRoll")
 public class BlackAndWhiteCameraRoll implements CameraRoll {
     @Override
     public void processing() {
