@@ -7,9 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.sectorsj.springcourse.TestBean">
-        <constructor-arg value="Eugen"/>
+   <context:component-scan base-package="ru.sectorsj.springcourse"/>
+    <bean id="camera" class="ru.sectorsj.springcourse.CameraImpl">
+        <property name="cameraRoll">
+            <ref bean="cameraRoll" />
+        </property>
     </bean>
-
 </beans>

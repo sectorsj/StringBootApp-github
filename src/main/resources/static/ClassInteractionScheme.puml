@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package  Assistant <<Rectangle>> {
+
+    interface Camera {
+         CameraRoll getCameraRoll()
+        void setCameraRoll(CameraRoll cameraRoll)
+        void doPhotograph()
+        void breaking()
+        boolean isBroken()
+    }
+
+    interface CameraRoll {
+        + void processing()
+    }
+
+    class CameraImpl {
+        - CameraRoll cameraRoll
+        - boolean broken
+        + CameraRoll getCameraRoll()
+        + void setCameraRoll(CameraRoll cameraRoll)
+        + boolean isBroken()
+        + void breaking()
+        + void doPhotograph()
+    }
+
+    class ColorCameraRoll {
+        + void processing()
+    }
+
+    class BlackAndWhiteCameraRoll {
+        + void processing()
+    }
+
+    class AppConfig {
+        + CameraRoll cameraRoll()
+        + Camera camera(CameraRoll cameraRoll)
+    }
+}
+
+class Client {
+    + static void main(String[] args)
+}
+
+
+AppConfig <|-|> Client
+AppConfig <|-- Camera
+Camera <. CameraImpl
+Camera <|-- CameraRoll
+CameraImpl <|-- CameraRoll
+CameraRoll <|-- ColorCameraRoll
+CameraRoll <|-- BlackAndWhiteCameraRoll
+
+
+
+@enduml

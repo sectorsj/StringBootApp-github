@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component("camera")
 @Scope("prototype")
 public class CameraImpl implements Camera {
@@ -21,7 +23,7 @@ public class CameraImpl implements Camera {
         return cameraRoll;
     }
 
-
+    @Autowired
     public void setCameraRoll(CameraRoll cameraRoll) {
         this.cameraRoll = cameraRoll;
     }
@@ -36,7 +38,6 @@ public class CameraImpl implements Camera {
         this.broken = true;
     }
 
-
     public void doPhotograph() {
         if (isBroken()) {
             System.out.println("Camera is broken!");
@@ -44,5 +45,9 @@ public class CameraImpl implements Camera {
         }
         System.out.println("Photo taken");
         cameraRoll.processing();
+    }
+    @PostConstruct
+    public void ready(){
+        System.out.println("Camera is ready to use!");
     }
 }

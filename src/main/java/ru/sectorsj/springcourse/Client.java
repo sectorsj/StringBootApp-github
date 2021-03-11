@@ -12,12 +12,21 @@ public class Client {
 		//SpringApplication.run(Client.class, args);
 
 		ApplicationContext context = new
-				AnnotationConfigApplicationContext(AppConfig.class);
+	AnnotationConfigApplicationContext(AppConfig.class);
+
 		Camera camera = context.getBean("camera", Camera.class);
+
+		// Ломает фотоаппарат
+		camera.breaking();
+
+		// Пытается сделать фото. Неудача!
 		camera.doPhotograph();
 
-		// CameraRoll cameraRoll = new ColorCameraRoll();
-		// Camera camera = new Camera();
-		// camera.setCameraRoll(cameraRoll);
+		// Просит еще один фотоаппарат
+		camera = context.getBean("camera", Camera.class);
+
+		// Пытается сделать фото.
+		camera.doPhotograph();
+
 	}
 }
